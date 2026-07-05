@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hypnotic Sound Healing | Jacqueline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sage: #93a878;
+    --sage-deep: #6f8558;
+    --sage-mist: #c7d3b6;
+    --purple: #9c8bbf;
+    --purple-deep: #6a5b8c;
+    --rose: #d9bfc9;
+    --cream: #faf7f1;
+    --paper: #f2ede4;
+    --ink: #3c3448;
+    --ink-soft: #6b6178;
+    --white: #fffdf9;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .display{
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+
+  a{ color: inherit; text-decoration:none; }
+
+  .container{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position: fixed;
+    top:0; left:0; right:0;
+    z-index: 100;
+    padding: 22px 0;
+    background: rgba(250, 247, 241, 0.82);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(60,52,72,0.06);
+    transition: padding 0.3s ease;
+  }
+  nav .container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.02em;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .brand-mark{
+    width: 22px; height:22px;
+    display:block;
+  }
+  .nav-links{
+    display:flex;
+    gap: 34px;
+    font-size: 0.86rem;
+    letter-spacing: 0.03em;
+  }
+  .nav-links a{
+    position:relative;
+    padding-bottom: 4px;
+    color: var(--ink-soft);
+    transition: color 0.25s ease;
+  }
+  .nav-links a::after{
+    content:'';
+    position:absolute;
+    left:0; bottom:0;
+    width:0; height:1px;
+    background: var(--purple-deep);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover{ color: var(--ink); }
+  .nav-links a:hover::after{ width:100%; }
+  .nav-cta{
+    font-size: 0.82rem;
+    padding: 10px 22px;
+    border: 1px solid var(--sage-deep);
+    border-radius: 999px;
+    color: var(--sage-deep) !important;
+    letter-spacing: 0.03em;
+    transition: all 0.3s ease;
+  }
+  .nav-cta:hover{
+    background: var(--sage-deep);
+    color: var(--white) !important;
+  }
+  .nav-toggle{ display:none; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position: relative;
+    min-height: 100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 140px 32px 80px;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 38%, rgba(156,139,191,0.16), transparent 70%),
+      radial-gradient(ellipse 60% 50% at 20% 85%, rgba(147,168,120,0.18), transparent 65%),
+      var(--cream);
+  }
+
+  .rings{
+    position:absolute;
+    top:50%; left:50%;
+    transform: translate(-50%,-50%);
+    width: min(900px, 140vw);
+    height: min(900px, 140vw);
+    pointer-events:none;
+  }
+  .rings circle{
+    fill:none;
+    stroke-width: 1;
+  }
+  .ring-sage{ stroke: var(--sage); opacity:0.35; }
+  .ring-purple{ stroke: var(--purple); opacity:0.3; }
+  .ring-rose{ stroke: var(--rose); opacity:0.35; }
+
+  @keyframes breathe{
+    0%, 100% { transform: scale(1); opacity: var(--base-op, 0.3); }
+    50% { transform: scale(1.045); opacity: calc(var(--base-op, 0.3) + 0.12); }
+  }
+  .r1{ animation: breathe 9s ease-in-out infinite; transform-origin: center; --base-op:0.4; }
+  .r2{ animation: breathe 9s ease-in-out infinite 1s; transform-origin: center; --base-op:0.32; }
+  .r3{ animation: breathe 9s ease-in-out infinite 2s; transform-origin: center; --base-op:0.26; }
+  .r4{ animation: breathe 9s ease-in-out infinite 3s; transform-origin: center; --base-op:0.2; }
+  .r5{ animation: breathe 9s ease-in-out infinite 4s; transform-origin: center; --base-op:0.15; }
+
+  .hero-content{
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 720px;
+  }
+  .eyebrow{
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--purple-deep);
+    margin-bottom: 22px;
+    display:inline-block;
+  }
+  .hero h1{
+    font-size: clamp(2.4rem, 6vw, 4.1rem);
+    line-height: 1.12;
+    font-weight: 400;
+    margin-bottom: 26px;
+  }
+  .hero h1 em{
+    font-style: italic;
+    color: var(--sage-deep);
+  }
+  .hero p{
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    max-width: 560px;
+    margin: 0 auto 40px;
+  }
+  .hero-actions{
+    display:flex;
+    gap: 18px;
+    justify-content:center;
+    flex-wrap: wrap;
+  }
+  .btn{
+    padding: 15px 34px;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    letter-spacing: 0.03em;
+    cursor:pointer;
+    transition: all 0.35s ease;
+    display:inline-block;
+    border: 1px solid transparent;
+  }
+  .btn-primary{
+    background: var(--purple-deep);
+    color: var(--white);
+  }
+  .btn-primary:hover{
+    background: var(--sage-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -8px rgba(107,133,88,0.45);
+  }
+  .btn-ghost{
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+  .btn-ghost:hover{
+    background: var(--ink);
+    color: var(--white);
+  }
+
+  .scroll-cue{
+    position:absolute;
+    bottom: 34px; left:50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+  }
+  .scroll-line{
+    width:1px; height: 34px;
+    background: linear-gradient(var(--ink-soft), transparent);
+    animation: scrolldrip 2.2s ease-in-out infinite;
+  }
+  @keyframes scrolldrip{
+    0%{ transform: scaleY(0); transform-origin: top; }
+    50%{ transform: scaleY(1); transform-origin: top; }
+    50.1%{ transform-origin: bottom; }
+    100%{ transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{ padding: 120px 0; position:relative; }
+  .section-head{
+    max-width: 620px;
+    margin-bottom: 64px;
+  }
+  .section-head.center{ margin-left:auto; margin-right:auto; text-align:center; }
+  .kicker{
+    font-size: 0.76rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    margin-bottom: 16px;
+    display:block;
+  }
+  .section-head h2{
+    font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+    font-weight: 400;
+    line-height:1.25;
+  }
+
+  /* ---------- WELCOME ---------- */
+  .welcome{ background: var(--white); }
+  .welcome-grid{
+    display:grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 70px;
+    align-items:center;
+  }
+  .portrait-frame{
+    position:relative;
+    aspect-ratio: 4/5;
+    border-radius: 4px;
+    background:
+      linear-gradient(160deg, var(--sage-mist), var(--purple) 130%);
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .portrait-frame svg{ width:62%; opacity:0.9; }
+  .portrait-caption{
+    margin-top: 18px;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+  .welcome-text p{ margin-bottom: 20px; color: var(--ink-soft); }
+  .welcome-text p:first-of-type{
+    font-family:'Fraunces', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  .signature{
+    margin-top: 28px;
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--purple-deep);
+  }
+
+  /* ---------- APPROACH ---------- */
+  .approach{
+    background: var(--paper);
+  }
+  .approach-inner{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .approach p{ color: var(--ink-soft); margin-bottom: 18px; }
+  .approach blockquote{
+    font-family:'Fraunces', serif;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    font-style: italic;
+    color: var(--ink);
+    border-left: 2px solid var(--sage-deep);
+    padding-left: 28px;
+    margin: 10px 0 30px;
+  }
+
+  /* ---------- WHAT IS ---------- */
+  .practice{ background: var(--white); }
+  .practice-cols{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 46px;
+    margin-top: 10px;
+  }
+  .practice-card{
+    padding: 42px 36px;
+    border-radius: 6px;
+    background: var(--cream);
+    border: 1px solid rgba(60,52,72,0.06);
+    position:relative;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .practice-card:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 24px 40px -20px rgba(60,52,72,0.18);
+  }
+  .practice-icon{
+    width: 48px; height:48px;
+    margin-bottom: 24px;
+  }
+  .practice-card h3{
+    font-size: 1.35rem;
+    margin-bottom: 14px;
+    font-weight: 400;
+  }
+  .practice-card p{ color: var(--ink-soft); font-size: 0.96rem; }
+  .practice-together{
+    margin-top: 44px;
+    text-align:center;
+    max-width: 640px;
+    margin-left:auto; margin-right:auto;
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+  }
+
+  /* ---------- EXPECT ---------- */
+  .expect{
+    background: linear-gradient(180deg, var(--sage-deep), #5c7048);
+    color: var(--white);
+  }
+  .expect .kicker{ color: var(--rose); }
+  .expect .section-head h2{ color: var(--white); }
+  .expect-flow{
+    display:flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 70px;
+    flex-wrap: wrap;
+  }
+  .flow-step{
+    flex: 1;
+    min-width: 200px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255,255,255,0.25);
+  }
+  .flow-step .num{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    opacity: 0.7;
+    display:block;
+    margin-bottom: 10px;
+  }
+  .flow-step h4{
+    font-family:'Fraunces', serif;
+    font-weight:400;
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+  }
+  .flow-step p{ font-size: 0.9rem; opacity: 0.85; }
+
+  .benefits-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    overflow:hidden;
+  }
+  .benefit{
+    background: rgba(255,255,255,0.06);
+    padding: 30px 22px;
+    text-align:center;
+    font-size: 0.9rem;
+    letter-spacing: 0.01em;
+  }
+  .benefit svg{ width:26px; height:26px; margin-bottom:14px; opacity:0.9; }
+
+  /* ---------- WHY ---------- */
+  .why{
+    background: var(--white);
+  }
+  .why-wrap{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 70px;
+    align-items:center;
+  }
+  .why p{ color: var(--ink-soft); margin-bottom: 18px; }
+  .why-visual{
+    position:relative;
+    aspect-ratio: 1/1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  /* ---------- INVITE / CTA ---------- */
+  .invite{
+    background: var(--cream);
+    text-align:center;
+  }
+  .invite-box{
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 70px 50px;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 30px 60px -30px rgba(107,91,140,0.25);
+    position:relative;
+  }
+  .invite h2{ font-size: clamp(1.8rem,3vw,2.3rem); margin-bottom:20px; font-weight:400; }
+  .invite p{ color: var(--ink-soft); margin-bottom: 34px; }
+  .services-list{
+    display:flex;
+    justify-content:center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 38px;
+  }
+  .service-pill{
+    font-size: 0.82rem;
+    padding: 9px 18px;
+    border-radius: 999px;
+    background: var(--sage-mist);
+    color: var(--sage-deep);
+  }
+  .service-pill:nth-child(2n){ background: rgba(156,139,191,0.22); color: var(--purple-deep); }
+  .service-pill:nth-child(3n){ background: rgba(216,185,197,0.4); color: #8a5a6b; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background: var(--ink);
+    color: rgba(255,255,255,0.65);
+    padding: 70px 0 40px;
+  }
+  .footer-top{
+    display:flex;
+    justify-content:space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+  }
+  .footer-brand{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--white);
+    margin-bottom: 14px;
+  }
+  .footer-col h5{
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 16px;
+  }
+  .footer-col a, .footer-col p{
+    display:block;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    color: rgba(255,255,255,0.75);
+    transition: color 0.25s ease;
+  }
+  .footer-col a:hover{ color: var(--sage-mist); }
+  .disclaimer{
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 30px;
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.42);
+  }
+  .disclaimer strong{ color: rgba(255,255,255,0.6); }
+
+  /* ---------- REVEAL ANIMATION ---------- */
+  .reveal{
+    opacity:0;
+    transform: translateY(26px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.visible{ opacity:1; transform: translateY(0); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    .nav-links{ display:none; }
+    .welcome-grid, .approach-inner, .why-wrap{ grid-template-columns: 1fr; }
+    .practice-cols{ grid-template-columns: 1fr; }
+    .benefits-grid{ grid-template-columns: repeat(2,1fr); }
+    .expect-flow{ flex-direction:column; }
+    section{ padding: 80px 0; }
+    .why-wrap{ text-align:left; }
+    .why-visual{ order:-1; max-width: 280px; margin:0 auto 20px; }
+  }
+  @media (max-width: 480px){
+    .invite-box{ padding: 46px 24px; }
+    .benefits-grid{ grid-template-columns: repeat(2,1fr); }
+    .footer-top{ flex-direction:column; gap: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="18" stroke="#6a5b8c" stroke-width="1"/>
+        <circle cx="20" cy="20" r="11" stroke="#93a878" stroke-width="1"/>
+        <circle cx="20" cy="20" r="4" fill="#d9bfc9"/>
+      </svg>
+      Hypnotic Sound Healing
+    </div>
+    <div class="nav-links">
+      <a href="#welcome">Welcome</a>
+      <a href="#practice">The Practice</a>
+      <a href="#expect">What to Expect</a>
+      <a href="#why">Why This Work</a>
+    </div>
+    <a href="#invite" class="nav-cta">Begin Your Session</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <svg class="rings" viewBox="0 0 900 900">
+    <circle class="r1 ring-sage" cx="450" cy="450" r="120"/>
+    <circle class="r2 ring-purple" cx="450" cy="450" r="200"/>
+    <circle class="r3 ring-rose" cx="450" cy="450" r="280"/>
+    <circle class="r4 ring-sage" cx="450" cy="450" r="360"/>
+    <circle class="r5 ring-purple" cx="450" cy="450" r="430"/>
+  </svg>
+  <div class="hero-content">
+    <span class="eyebrow">Sound Healing &amp; Hypnotherapy</span>
+    <h1>Find calm through sound, relaxation, and the <em>power of the mind</em></h1>
+    <p>A gentle space where the body can rest, the mind can quiet, and inner peace can begin to emerge — guided by Jacqueline.</p>
+    <div class="hero-actions">
+      <a href="#invite" class="btn btn-primary">Book a Session</a>
+      <a href="#practice" class="btn btn-ghost">Explore the Practice</a>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    <span>Breathe &amp; Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</header>
+
+<section class="welcome" id="welcome">
+  <div class="container welcome-grid">
+    <div class="reveal">
+      <div class="portrait-frame">
+        <svg viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="70" stroke="#faf7f1" stroke-width="1" opacity="0.7"/>
+          <circle cx="100" cy="100" r="50" stroke="#faf7f1" stroke-width="1" opacity="0.8"/>
+          <circle cx="100" cy="100" r="30" stroke="#faf7f1" stroke-width="1"/>
+          <path d="M60 130 Q100 90 140 130" stroke="#faf7f1" stroke-width="1.5" fill="none"/>
+        </svg>
+      </div>
+      <p class="portrait-caption">Jacqueline, Founder of Hypnotic Sound Healing</p>
+    </div>
+    <div class="welcome-text reveal">
+      <span class="kicker">Welcome</span>
+      <p>Welcome, and thank you for visiting. I'm Jacqueline, and my passion is helping people discover a place of deep relaxation — where the body can rest, the mind can grow quiet, and inner peace can begin to emerge.</p>
+      <p>Like many people, I've felt the demands of everyday life leave me overwhelmed, mentally exhausted, and disconnected from myself. That journey led me to holistic practices that nurture both body and mind — and through sound healing and hypnotherapy, I found gentle yet powerful ways to encourage relaxation, self-awareness, and personal growth.</p>
+      <p>Today, I'm honored to share these experiences with others.</p>
+      <p class="signature">— Jacqueline</p>
+    </div>
+  </div>
+</section>
+
+<section class="approach" id="approach">
+  <div class="container approach-inner">
+    <div class="reveal">
+      <span class="kicker">My Approach</span>
+      <h2>Healing begins with feeling safe, supported, and truly heard.</h2>
+    </div>
+    <div class="reveal">
+      <p>Every person who walks through my door has a unique story, and every session is designed with that in mind. My goal is to create a peaceful environment where you can let go of stress, breathe deeply, and simply be present.</p>
+      <blockquote>"Rather than trying to fix you, I provide a space where your own natural ability to restore balance can flourish."</blockquote>
+      <p>My sessions blend therapeutic sound with guided hypnotic relaxation to help calm the nervous system and encourage a state of deep rest. Whether you're new to holistic wellness or have years of experience, you are welcome here exactly as you are.</p>
+    </div>
+  </div>
+</section>
+
+<section class="practice" id="practice">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="kicker">What Is Hypnotic Sound Healing?</span>
+      <h2>Two complementary practices, woven into one deeply relaxing experience</h2>
+    </div>
+    <div class="practice-cols">
+      <div class="practice-card reveal">
+        <svg class="practice-icon" viewBox="0 0 48 48" fill="none">
+          <ellipse cx="24" cy="30" rx="18" ry="8" fill="#c7d3b6"/>
+          <ellipse cx="24" cy="27" rx="18" ry="8" fill="#93a878"/>
+          <path d="M14 27 Q24 10 34 27" stroke="#6f8558" stroke-width="1.2" fill="none" opacity="0.6"/>
+        </svg>
+        <h3>Sound Healing</h3>
+        <p>The soothing vibrations of crystal singing bowls, Tibetan bowls, tuning forks, and chimes encourage relaxation and mindfulness, gently guiding the nervous system toward rest.</p>
+      </div>
+      <div class="practice-card reveal">
+        <svg class="practice-icon" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="16" stroke="#9c8bbf" stroke-width="1.4"/>
+          <circle cx="24" cy="24" r="9" stroke="#6a5b8c" stroke-width="1.4"/>
+          <circle cx="24" cy="24" r="2.5" fill="#d9bfc9"/>
+        </svg>
+        <h3>Hypnotherapy</h3>
+        <p>A gentle guide into a naturally relaxed state of focused awareness, where positive suggestion, visualization, and calming techniques support emotional well-being and growth.</p>
+      </div>
+    </div>
+    <p class="practice-together reveal">Together, these practices create an immersive experience many clients describe as peaceful, restorative, and deeply calming.</p>
+  </div>
+</section>
+
+<section class="expect" id="expect">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">What You Can Expect</span>
+      <h2>A gentle path from conversation to deep rest</h2>
+    </div>
+    <div class="expect-flow reveal">
+      <div class="flow-step">
+        <span class="num">First</span>
+        <h4>A Conversation</h4>
+        <p>We begin by discussing your goals and intentions for the session.</p>
+      </div>
+      <div class="flow-step">
+        <span class="num">Then</span>
+        <h4>Breath &amp; Relaxation</h4>
+        <p>Guided breathing exercises and relaxation techniques settle the body.</p>
+      </div>
+      <div class="flow-step">
+        <span class="num">Finally</span>
+        <h4>Sound &amp; Guidance</h4>
+        <p>Therapeutic sound and gentle hypnotic guidance carry you into deep rest.</p>
+      </div>
+    </div>
+
+    <div class="benefits-grid reveal">
+      <div class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 3v18M4 12h16"/></svg>Deep relaxation</div>
+      <div class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><circle cx="12" cy="12" r="8"/></svg>Reduced stress &amp; anxiety</div>
+      <div class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M4 18c4-8 12-8 16 0"/></svg>Improved sleep</div>
+      <div class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l2.5 7H21l-5.5 4L17 21l-5-4-5 4 1.5-8L3 9h6.5z"/></svg>Mental clarity</div>
+      <div class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 21s-7-4.5-7-10a5 5 0 0110-1 5 5 0 0110 1c0 5.5-7 10-7 10z"/></svg>Emotional balance</div>
+      <div class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/></svg>Increased focus</div>
+      <div class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg>Renewed energy</div>
+      <div class="benefit"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2a10 10 0 000 20 10 10 0 000-20z"/><path d="M12 6v6l4 2"/></svg>Inner peace</div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="container why-wrap">
+    <div class="reveal">
+      <span class="kicker">Why I Love This Work</span>
+      <h2 style="margin-bottom:22px;">Watching someone arrive carrying the weight of the day — and leave feeling light</h2>
+      <p>There is something truly special about witnessing that transformation. Creating that experience is why I do what I do.</p>
+      <p>My greatest hope is that every person who visits Hypnotic Sound Healing feels welcomed, supported, and inspired to continue caring for their mind, body, and spirit.</p>
+    </div>
+    <div class="why-visual reveal">
+      <svg viewBox="0 0 300 300" width="100%">
+        <circle cx="150" cy="150" r="40" fill="none" stroke="#93a878" stroke-width="1"/>
+        <circle cx="150" cy="150" r="75" fill="none" stroke="#9c8bbf" stroke-width="1"/>
+        <circle cx="150" cy="150" r="110" fill="none" stroke="#d9bfc9" stroke-width="1"/>
+        <circle cx="150" cy="150" r="145" fill="none" stroke="#93a878" stroke-width="0.75" opacity="0.5"/>
+        <circle cx="150" cy="150" r="10" fill="#6a5b8c"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="invite" id="invite">
+  <div class="container">
+    <div class="invite-box reveal">
+      <span class="kicker">You're Invited</span>
+      <h2>Begin your wellness journey today</h2>
+      <p>Whether you're looking for a private sound healing session, guided hypnotherapy, a relaxing sound bath, or simply a peaceful space to unwind, I would be honored to be part of your journey.</p>
+      <div class="services-list">
+        <span class="service-pill">Sound Healing</span>
+        <span class="service-pill">Hypnotherapy</span>
+        <span class="service-pill">Sound Bath</span>
+        <span class="service-pill">Private Sessions</span>
+      </div>
+      <a href="mailto:jt.hypnola@gmail.com?subject=Session%20Inquiry&body=Hi%20Jacqueline%2C%0A%0AI'd%20love%20to%20book%20a%20session.%20Here%20are%20a%20few%20details%3A%0A%0AName%3A%0APreferred%20service%20(sound%20healing%20%2F%20hypnotherapy%20%2F%20sound%20bath)%3A%0APreferred%20dates%2Ftimes%3A%0A%0AThank%20you!" class="btn btn-primary">Schedule Your Session</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Hypnotic Sound Healing</div>
+        <p style="max-width:280px; color:rgba(255,255,255,0.5);">Helping you find calm through sound, relaxation, and the power of the mind.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <a href="#welcome">Welcome</a>
+        <a href="#practice">The Practice</a>
+        <a href="#expect">What to Expect</a>
+        <a href="#why">Why This Work</a>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <a href="#invite">Book a Session</a>
+        <a href="mailto:jt.hypnola@gmail.com">jt.hypnola@gmail.com</a>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <strong>Wellness Disclaimer:</strong> Sound healing and hypnotherapy are complementary wellness practices designed to promote relaxation and overall well-being. They are not intended to diagnose, treat, cure, or prevent any medical or psychological condition, and are not a substitute for professional medical or mental health care. Please consult a qualified healthcare provider for any medical concerns.
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
